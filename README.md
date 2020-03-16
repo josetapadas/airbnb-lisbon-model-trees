@@ -10,7 +10,7 @@ It assumes as well basic understanding of Python and the machine learning librar
 As the first step we start by loading our dataset. After downloading the file it is trivial to open and parse it with Pandas and provide a quick list of what we could expect from it:
 
 
-```python
+```
 import pandas as pd
 
 airbnb_lisbon_prices_path = './airbnb_lisbon_1480_2017-07-27.csv'
@@ -33,7 +33,7 @@ airbnb_data.columns
 Even though above we can confirm that the dataset was properly loaded and parsed, a quick analysis of the statistical description of the data may provide us a quick insight of its nature:
 
 
-```python
+```
 airbnb_data.describe()
 ```
 
@@ -213,7 +213,7 @@ From this table we can actually infer about basic statistical observations for e
 The price distribution could be represented as follows:
 
 
-```python
+```
 import matplotlib.pyplot as plt
 import seaborn as sns
 
@@ -229,7 +229,7 @@ sns.distplot(a=airbnb_data['price'])
 As we can see, our distribution of prices concentrates, under the **300 EUR** interval, having some entries for the **4000 EUR** values. Plotting it for where most of the prices reside:
 
 
-```python
+```
 airbnb_sub_set = airbnb_data.loc[airbnb_data.price < 300]
 sns.distplot(a=airbnb_sub_set['price'])
 ```
@@ -241,7 +241,7 @@ We can clearly see from our representation above that most of the prices, for a 
 Let us now pry and have a sneak peak into the actual dataset, in order to understand the kind of parameters we'll be working on:
 
 
-```python
+```
 airbnb_data.head()
 ```
 
@@ -412,7 +412,7 @@ Let us then proceed on separating the dataset in:
 This can be achieved by the following snippet:
 
 
-```python
+```
 lisbon_features = ['reviews', 'overall_satisfaction', 'accommodates', 'bedrooms', 'latitude', 'longitude']
 
 Y = airbnb_data.price
@@ -489,7 +489,7 @@ X.head()
 With our new subset, we can now try to understand what is the correlation of these parameters in terms of the overall satisfaction, for the most common price range:
 
 
-```python
+```
 relevant_parameters = ['price'] + lisbon_features
 sns.pairplot(airbnb_data.loc[airbnb_data.price < 300][relevant_parameters], hue="overall_satisfaction")
 ```
@@ -506,7 +506,7 @@ The above plots allow us to check the distribution of all the single variables a
 On curious observation is also that the location heavily influences price and rating. When plotting both longitude and latitudw we can obtain a quasi geografical / spacial distribution for the ratings along Lisbon:
 
 
-```python
+```
 sns.pairplot(airbnb_data, vars=['latitude', 'longitude'], hue="overall_satisfaction", height=3)
 ```
 
@@ -531,7 +531,7 @@ Both sets would then basically be a subset of **X** and **Y**, containing a subs
 In order to avoid this **overfitting** of our model to the test data we will then use a tool from sklearn called https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html that basically will split our data into a random train of train and test subsets:
 
 
-```python
+```
 from sklearn.model_selection import train_test_split
 
 train_X, validation_X, train_Y, validation_Y = train_test_split(X, Y, random_state = 42)
@@ -567,7 +567,7 @@ On the wikipedia example above it is trivial to follow how the decision process 
 Let us then create our Decision Tree regressor by utilizing the [sklearn implementation](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeRegressor.html?highlight=decisiontreeregressor#sklearn.tree.DecisionTreeRegressor):
 
 
-```python
+```
 from sklearn.tree import DecisionTreeRegressor
 
 lisbon_airbnb_model = DecisionTreeRegressor(random_state = 42)
@@ -588,7 +588,7 @@ lisbon_airbnb_model.fit(train_X, train_Y)
 We can verify how the tree was built, for illustration purposes, on the picture below:
 
 
-```python
+```
 from sklearn.tree import export_graphviz
 from graphviz import Source
 
@@ -611,7 +611,7 @@ Please [find here a graphical representation of the generated tree](https://gith
 We can also show a snippet of the predictions, and corresponding parameters for a sample of the training data set. So for the following accomodations:
 
 
-```python
+```
 train_X.head()
 ```
 
@@ -686,7 +686,7 @@ train_X.head()
 We obtain the following prices:
 
 
-```python
+```
 lisbon_airbnb_model.predict(train_X.head())
 ```
 
@@ -708,7 +708,7 @@ It is basically an average over the the differences between our model prediction
 Let us then apply this metric to our model, using [Scikit Learn](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_absolute_error.html) implementation:
 
 
-```python
+```
 from sklearn.metrics import mean_absolute_error
 
 # instruct our model to make predictions for the prices on the validation set
@@ -738,7 +738,7 @@ Currently we are indeed suffering for overfitting on the test data. If we imagin
 As sklearn's `DecisionTreeRegressor` allows us to specify a maximum number of leaf nodes as an hyper parameter, let us quickly try to assess if there is a value that decreses our MAE:
 
 
-```python
+```
 # this function takes both the training and validation sets to compute the MAE for a Decision Tree
 def compute_mae(train_X, train_Y, validation_X, validation_Y, max_leaf_nodes):
     trees_model = DecisionTreeRegressor(max_leaf_nodes = max_leaf_nodes, random_state = 42)
@@ -792,7 +792,7 @@ best_tree_size
 Let us then try to generate our model, but including the computed max tree size, and check then its prediction with the new limit:
 
 
-```python
+```
 # create the model
 lisbon_airbnb_model = DecisionTreeRegressor(max_leaf_nodes = best_tree_size, random_state = 42)
 lisbon_airbnb_model.fit(train_X, train_Y)
@@ -830,7 +830,7 @@ This was the scenario we analysed until now, with a MAE of: **36.82474862034445*
 So for label encoding we assume that each value is assigned to a unique integer. We an also make this transformation taking into account any kind of ordering/magnitude that may be relevant for data (e.g., ratings, views, ...). Let us check a simple example using the sklearn preprocessor:
 
 
-```python
+```
 from sklearn.preprocessing import LabelEncoder
 
 encoder = LabelEncoder()
@@ -853,7 +853,7 @@ encoder.transform(sample_inputs)
 It is trivial to assess then the transformation that the `LabelEncoder` is doing, by assigning the array index of the fitted data:
 
 
-```python
+```
 encoder.classes_
 ```
 
@@ -867,7 +867,7 @@ encoder.classes_
 Let us then apply to our categorical data this preprocessing technique, and let us verify how this affects our model predictions. So our new data set would be:
 
 
-```python
+```
 lisbon_features_extended = ['room_type', 'neighborhood', 'reviews', 'overall_satisfaction', 'accommodates', 'bedrooms', 'latitude', 'longitude']
 X = airbnb_data[lisbon_features_extended]
 
@@ -957,7 +957,7 @@ X.head()
 Our categorical data, represented on our panda's dataframe as an `object`, can then be extracted by:
 
 
-```python
+```
 categorical = (X.dtypes == 'object')
 categorial_columns = list(categorical[categorical].index)
 
@@ -974,7 +974,7 @@ categorial_columns
 Now that we have the columns, let us then transform them on both the training and validation sets:
 
 
-```python
+```
 train_X, validation_X, train_Y, validation_Y = train_test_split(X, Y, random_state = 42)
 
 # create copies of our data sets to apply the transformations
@@ -1075,7 +1075,7 @@ train_X_encoded.head()
 Let us now train and fit the model with the transformed data:
 
 
-```python
+```
 # compute the best tree size
 best_tree_size = get_best_tree_size(train_X_encoded, train_Y, validation_X_encoded, validation_Y)
 
@@ -1104,7 +1104,7 @@ We have then improved our predictor, by encoding our categorical data, reducing 
 One-Hot encoding, instead of enumerating a fields' possible values, creates new columns indicating the presence or absence of the encoded values. Let us showcase this with a small example
 
 
-```python
+```
 from sklearn.preprocessing import OneHotEncoder
 
 # categories
@@ -1129,7 +1129,7 @@ encoder.fit_transform([['suite', 'iglo'], ['single room', 'apartement']])
 From the result above we can see that the binary encoding is providing `1` on the features that each feature array actually has enabled, and `0` when not present. Let us then try to use this preprocessing on our model:
 
 
-```python
+```
 encoder = OneHotEncoder(sparse=False, handle_unknown='ignore')
 
 # create a pandas dataframe with our transformed categorical columns, with One Hot Encoding
@@ -1305,7 +1305,7 @@ So the above result may look wierd at first but, for the 26 possible categories 
 - replace the droped columns by our new dataframe with all 26 possible categories
 
 
-```python
+```
 train_X_encoded_categories.index = train_X.index
 validation_X_encoded_categories.index = validation_X.index
 
@@ -1481,7 +1481,7 @@ validation_X_encoded.head()
 Now we can proceed on using our new encoded sets into our model:
 
 
-```python
+```
 # compute the best tree size
 best_tree_size = get_best_tree_size(train_X_encoded, train_Y, validation_X_encoded, validation_Y)
 
@@ -1526,7 +1526,7 @@ The original publication, explaining this algorithm in more depth, can be found 
 Let us then implement our predictor using a Random Forest:
 
 
-```python
+```
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error
 
