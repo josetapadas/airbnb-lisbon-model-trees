@@ -41,19 +41,6 @@ airbnb_data.describe()
 
 
 <div>
-<style>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -283,19 +270,6 @@ airbnb_data.head()
 
 
 <div>
-<style>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -472,19 +446,6 @@ X.head()
 
 
 <div>
-<style>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -708,19 +669,6 @@ train_X.head()
 
 
 <div>
-<style>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -980,19 +928,6 @@ X.head()
 
 
 <div>
-<style>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1111,19 +1046,6 @@ train_X_encoded.head()
 
 
 <div>
-<style>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1271,19 +1193,6 @@ train_X_encoded_categories.head()
 
 
 <div>
-<style>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1464,19 +1373,6 @@ validation_X_encoded.head()
 
 
 <div>
-<style>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table class="dataframe">
   <thead>
     <tr style="text-align: right;">
