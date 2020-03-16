@@ -3,7 +3,7 @@
 
 In this small article we will quickly bootstrap a prediction model for the nighly prices of an AirBnB in Lisbon. This guide hopes to serve as a simplistic and practical introduction to machine learning data analysis, by using real data and developing a real model.
 
-It assumes as well basic understanding of Python and the machine learning library [scikit-learn](https://scikit-learn.org/stable/), and it was written on a Jupyter notebook running Python 3.6 and sklearn 0.21. The dataset, as well as the notebook, can be obtained on my Github account, or via [Google's dataset search](https://datasetsearch.research.google.com/search?query=lisbon%20airbnb&amp;docid=c6zMqHvIlOwEwlHEAAAAAA%3D%3D).
+It assumes as well basic understanding of Python and the machine learning library [scikit-learn](https://scikit-learn.org/stable/), and it was written on a Jupyter notebook running Python 3.6 and sklearn 0.21. The dataset, as well as the notebook, can be obtained on my [Github account](https://github.com/josetapadas/airbnb-lisbon-model-trees), or via [Google's dataset search](https://datasetsearch.research.google.com/search?query=lisbon%20airbnb&amp;docid=c6zMqHvIlOwEwlHEAAAAAA%3D%3D).
 
 ## 1. Data exploration and cleanup
 
