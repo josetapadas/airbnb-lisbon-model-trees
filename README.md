@@ -565,7 +565,7 @@ sns.pairplot(airbnb_data, vars=['latitude', 'longitude'], hue="overall_satisfact
 
 We can then add this data to an actual map of Lisbon, to check the distribution:
 
-![distribution of reviews](./lisbon_mapped_reviews.png)
+![distribution of reviews](./lisbon_reviews.png)
 
 As expected, most of the reviews are on the city center with a cluster of reviews already relevant alongside the recent Parque das Nações. The northern more sub-urban area, even though it has some scattered places, the reviews are not as high and common as on the center. 
 
