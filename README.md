@@ -223,18 +223,6 @@ pd.plotting.register_matplotlib_converters()
 sns.distplot(a=airbnb_data['price'])
 ```
 
-    /home/nbuser/anaconda3_501/lib/python3.6/site-packages/scipy/stats/stats.py:1713: FutureWarning: Using a non-tuple sequence for multidimensional indexing is deprecated; use `arr[tuple(seq)]` instead of `arr[seq]`. In the future this will be interpreted as an array index, `arr[np.array(seq)]`, which will result either in an error or a different result.
-      return np.add.reduce(sorted[indexer] * weights, axis=axis) / sumval
-
-
-
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x7f996ef1d5c0>
-
-
-
-
 ![png](output_6_2.png)
 
 
@@ -245,15 +233,6 @@ As we can see, our distribution of prices concentrates, under the **300 EUR** in
 airbnb_sub_set = airbnb_data.loc[airbnb_data.price < 300]
 sns.distplot(a=airbnb_sub_set['price'])
 ```
-
-
-
-
-    <matplotlib.axes._subplots.AxesSubplot at 0x7f996e3926a0>
-
-
-
-
 ![png](output_8_1.png)
 
 
@@ -442,9 +421,6 @@ X = airbnb_data[lisbon_features]
 X.head()
 ```
 
-
-
-
 <div>
 <table class="dataframe">
   <thead>
@@ -518,24 +494,6 @@ relevant_parameters = ['price'] + lisbon_features
 sns.pairplot(airbnb_data.loc[airbnb_data.price < 300][relevant_parameters], hue="overall_satisfaction")
 ```
 
-    /home/nbuser/anaconda3_501/lib/python3.6/site-packages/numpy/core/_methods.py:140: RuntimeWarning: Degrees of freedom <= 0 for slice
-      keepdims=keepdims)
-    /home/nbuser/anaconda3_501/lib/python3.6/site-packages/numpy/core/_methods.py:132: RuntimeWarning: invalid value encountered in double_scalars
-      ret = ret.dtype.type(ret / rcount)
-    /home/nbuser/anaconda3_501/lib/python3.6/site-packages/statsmodels/nonparametric/kde.py:488: RuntimeWarning: invalid value encountered in true_divide
-      binned = fast_linbin(X, a, b, gridsize) / (delta * nobs)
-    /home/nbuser/anaconda3_501/lib/python3.6/site-packages/statsmodels/nonparametric/kdetools.py:34: RuntimeWarning: invalid value encountered in double_scalars
-      FAC1 = 2*(np.pi*bw/RANGE)**2
-
-
-
-
-
-    <seaborn.axisgrid.PairGrid at 0x7f996e386320>
-
-
-
-
 ![png](output_14_2.png)
 
 
@@ -551,14 +509,6 @@ On curious observation is also that the location heavily influences price and ra
 ```python
 sns.pairplot(airbnb_data, vars=['latitude', 'longitude'], hue="overall_satisfaction", height=3)
 ```
-
-
-
-
-    <seaborn.axisgrid.PairGrid at 0x7f996a71deb8>
-
-
-
 
 ![png](output_16_1.png)
 
@@ -654,7 +604,7 @@ Image(filename = 'tree.png')
 
 
 
-![png](output_24_0.png)
+Please [find here a graphical representation of the generated tree](https://github.com/josetapadas/airbnb-lisbon-model-trees/blob/master/output_24_0.png) (big picture)
 
 
 
